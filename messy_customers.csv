@@ -1,0 +1,21 @@
+Name, Email, Age, Signup Date, Purchase Amount
+ Alice Smith , ALICE@EXAMPLE.COM ,30,01/15/2024,$25.50
+Bob Lee,bob@example.com,41,2024-02-01,45.00
+Carol King,carol.example.com,28,2024-02-03,12.75
+David Chen,david@example.com,-3,2024-02-05,18.00
+Eva Green,eva@example.com,abc,2024-02-07,19.99
+Frank Moore,frank@example.com,33,not-a-date,10.00
+Grace Park,grace@example.com,29,"January 17, 2024","$1,200.50"
+Bob Duplicate,BOB@example.com,42,02/10/2024,50.00
+Henry Adams,HENRY@example.com,35,02/12/2024,$75.25
+Ivy Chen,ivy.chen@example.com,22,2024-02-14,30.00
+Jack Wilson,jack@example.com,27,"February 15, 2024",$89.99
+Karen Liu,karen@example.com,31,02/18/2024,$100.00
+Leo Garcia,leo.garcia@example.com,45,2024-02-20,250.75
+Maya Patel,maya@example.com,26,"March 1, 2024",$15.00
+Noah Brown,noah@example.com,38,03/03/2024,60.00
+Olivia Davis,olivia.davis@example.com,24,2024-03-05,$42.10
+Peter Kim,peter@example.com,52,"March 7, 2024",130.40
+Quinn Miller,quinn@example.com,29,03/09/2024,$5.99
+Rachel Stone,rachel.stone@example.com,33,2024-03-11,78.88
+Sam Turner,sam.turner@example.com,47,"March 13, 2024",$300.00
