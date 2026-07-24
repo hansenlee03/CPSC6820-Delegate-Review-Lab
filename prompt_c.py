@@ -1,6 +1,7 @@
 import csv
 import io
 import re
+import sys
 from datetime import datetime
 
 
@@ -27,7 +28,7 @@ def clean_csv_text(csv_text: str) -> tuple[str, list[str]]:
     cleaned_rows = []
     errors = []
     seen_emails = set()
-    email_regex = r"^[\w\.-]+(:\+[\w\.-]+)?@[\w\.-]+\.\w{2,}$"
+    email_regex = r"^[\w.+-]+@[\w\.-]+\.\w{2,}$"
     date_formats = ("%Y-%m-%d", "%m/%d/%Y", "%B %d, %Y")
 
     for row_idx, row in enumerate(reader, start=1):
@@ -55,10 +56,11 @@ def clean_csv_text(csv_text: str) -> tuple[str, list[str]]:
             if not raw_age:
                 raise ValueError("Missing or empty Age")
             try:
-                age_float = float(raw_age)
-                age = int(age_float)
+                age = int(raw_age)
             except (ValueError, TypeError):
-                raise ValueError(f"Non-numeric Age value: '{raw_age}'")
+                raise ValueError(
+                    f"Age must be a whole number: '{raw_age}'"
+                )
             if age < 0:
                 raise ValueError(f"Negative Age value: '{raw_age}'")
             if age > 120:
@@ -119,8 +121,15 @@ if __name__ == "__main__":
     print(f"Reading data from {input_filename}...")
 
     # Open and read the raw CSV file into a string
-    with open(input_filename, mode="r", encoding="utf-8") as file:
-        raw_csv_content = file.read()
+    try:
+        with open(input_filename, mode="r", encoding="utf-8") as file:
+            raw_csv_content = file.read()
+    except OSError as error:
+        print(
+            f"Error: Unable to read {input_filename}: {error}",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
 
     # Process the text using the cleaning function
     cleaned_csv_output, validation_errors = clean_csv_text(raw_csv_content)
